@@ -3,7 +3,8 @@ version: 2.1
 jobs:
   execute-ruby-script:
     docker:
-      - image: circleci/ruby:3.2  # Ruby Docker image
+      - image: jruby:9.3  # Ruby Docker image
+      #- image: circleci/ruby:3.2  # Old code
     steps:
       - checkout  # Check out the code from the repository
       - run:
