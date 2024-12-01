@@ -1,0 +1,29 @@
+name: Ruby CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run-ruby-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.2 # Specify your Ruby version here
+
+    - name: Install dependencies
+      run: |
+        bundle install || echo "No Gemfile found, skipping"
+
+    - name: Execute Ruby script
+      run: ruby ruby1.rb
