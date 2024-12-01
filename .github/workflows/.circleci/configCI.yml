@@ -1,26 +1,27 @@
 version: 2.1
 
 executors:
-  ruby-executor:
+  jruby-executor:
     docker:
-      - image: circleci/ruby:3.2  # Use an appropriate Ruby version
-    working_directory: ~/sriniCircleCI
+      - image: jruby/jruby:9.4  # Replace with the latest JRuby image
+    working_directory: ~/project
 
 jobs:
-  run-ruby-script:
-    executor: ruby-executor
+  run-jruby-script:
+    executor: jruby-executor
     steps:
       - checkout
       - run:
-          name: Install Dependencies
+          name: Install Bundler and Dependencies
           command: |
+            gem install bundler
             bundle install
       - run:
-          name: Execute Ruby File
-          command: ruby your_script.rb
+          name: Execute JRuby Script
+          command: jruby your_script.rb
 
 workflows:
   version: 2
-  ruby_execution_workflow:
+  jruby_execution_workflow:
     jobs:
-      - run-ruby-script
+      - run-jruby-script
