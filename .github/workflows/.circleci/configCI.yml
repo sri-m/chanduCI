@@ -4,7 +4,7 @@ executors:
   ruby-executor:
     docker:
       - image: circleci/ruby:3.2  # Use an appropriate Ruby version
-    working_directory: ~/project
+    working_directory: ~/sriniCircleCI
 
 jobs:
   run-ruby-script:
