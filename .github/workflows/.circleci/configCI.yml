@@ -1,26 +1,26 @@
 version: 2.1
 
-jobs:
-  execute-ruby-script:
+executors:
+  ruby-executor:
     docker:
-      - image: cimg/ruby:3.2  # Ruby Docker image
-      #- image: circleci/ruby:3.2  # Old code
+      - image: circleci/ruby:3.2  # Use an appropriate Ruby version
+    working_directory: ~/project
+
+jobs:
+  run-ruby-script:
+    executor: ruby-executor
     steps:
-      - checkout  # Check out the code from the repository
+      - checkout
       - run:
-          name: Install Dependencies (if any)
+          name: Install Dependencies
           command: |
-            if [ -f Gemfile ]; then
-              bundle install
-            else
-              echo "No Gemfile found, skipping dependency installation."
-            fi
+            bundle install
       - run:
-          name: Run Script
-          command: ruby ruby1.rb  # Execute the Ruby script
+          name: Execute Ruby File
+          command: ruby your_script.rb
 
 workflows:
   version: 2
-  run-script:
+  ruby_execution_workflow:
     jobs:
-      - execute-ruby-script
+      - run-ruby-script
