@@ -3,7 +3,7 @@ version: 2.1
 executors:
   jruby-executor:
     docker:
-      - image: cimg/ruby:3.3.6-node  # Replace with the latest JRuby image
+      - image: cimg/ruby:3.3.6  # Replace with the latest JRuby image
     working_directory: ~/project
 
 jobs:
