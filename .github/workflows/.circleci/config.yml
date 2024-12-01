@@ -15,7 +15,7 @@ jobs:
               echo "No Gemfile found, skipping dependency installation."
             fi
       - run:
-          name: Run Ruby Script
+          name: Run Script
           command: ruby ruby1.rb  # Execute the Ruby script
 
 workflows:
